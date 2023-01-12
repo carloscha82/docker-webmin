@@ -1,7 +1,8 @@
 version: '3.3'
 services:
   webmin:
-    build: .
+    image: carloscha82/docker-webmin:latest
+#    build: .
     restart: unless-stopped
     ports:
       - 10000:10000

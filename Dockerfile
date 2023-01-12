@@ -13,12 +13,12 @@ RUN apt-get update -qq -y && \
        wget \
        curl \
        apt-transport-https \
-    #    lsb-release \
-    #    ca-certificates \
+       lsb-release \
+       ca-certificates \
        gnupg2 \
-    #    software-properties-common \
-       tzdata
-    #    cron
+       software-properties-common \
+       tzdata \
+       cron
 
 # Se configura timezone
 ENV TZ=America/Bogota
@@ -44,8 +44,8 @@ EXPOSE 10000
 # Se crea scipt entrypoint.sh para iniciar el servicio de Webmin
 WORKDIR /root
 RUN echo echo "#! /bin/bash" > entrypoint.sh && \
-    # echo "systemctl enable cron && service webmin start && tail -f /dev/null" >> entrypoint.sh && \
-    echo "service webmin start && tail -f /dev/null" >> entrypoint.sh && \
+    echo "systemctl enable cron && service webmin start && tail -f /dev/null" >> entrypoint.sh && \
+    # echo "service webmin start && tail -f /dev/null" >> entrypoint.sh && \
     chmod 755 entrypoint.sh
 CMD /root/entrypoint.sh
 
