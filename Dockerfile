@@ -31,7 +31,7 @@ EXPOSE 10000
 
 WORKDIR /root
 RUN echo echo "#! /bin/bash" > entrypoint.sh && \
-    echo "systemctl enable cron && service webmin start && tail -f /dev/null" >> entrypoint.sh && \
+    echo "service webmin start && tail -f /dev/null" >> entrypoint.sh && \
     chmod 755 entrypoint.sh
 
 CMD /root/entrypoint.sh
