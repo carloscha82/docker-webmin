@@ -10,14 +10,14 @@ RUN apt-get update -qq -y && \
     apt-get upgrade -y && \
     apt-get install -y \
        wget \
-    #    curl \
+       curl \
        apt-transport-https \
-    #    lsb-release \
-    #    ca-certificates \
+       lsb-release \
+       ca-certificates \
        gnupg2 \
-    #    software-properties-common \
-       locales
-    #    cron    
+       software-properties-common \
+       locales \
+       cron   
 RUN dpkg-reconfigure locales
 RUN update-locale LANG=C.UTF-8 
 RUN echo "deb https://download.webmin.com/download/repository sarge contrib" >>  /etc/apt/sources.list
