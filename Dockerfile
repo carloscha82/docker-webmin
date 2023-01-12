@@ -4,6 +4,8 @@ LABEL description="Webmin over Ubuntu 22.04 basic"
 LABEL name="webmin"
 USER root
 
+ENV TZ=America/Bogota
+
 RUN apt-get update -qq -y && \
     apt-get upgrade -y && \
     apt-get install -y \
@@ -12,12 +14,12 @@ RUN apt-get update -qq -y && \
        apt-transport-https \
     #    lsb-release \
     #    ca-certificates \
-       gnupg2
+       gnupg2 \
     #    software-properties-common \
-    #    locales \
+       locales
     #    cron    
-# RUN dpkg-reconfigure locales
-# RUN update-locale LANG=C.UTF-8 
+RUN dpkg-reconfigure locales
+RUN update-locale LANG=C.UTF-8 
 RUN echo "deb https://download.webmin.com/download/repository sarge contrib" >>  /etc/apt/sources.list
 
 RUN wget https://download.webmin.com/jcameron-key.asc && \
